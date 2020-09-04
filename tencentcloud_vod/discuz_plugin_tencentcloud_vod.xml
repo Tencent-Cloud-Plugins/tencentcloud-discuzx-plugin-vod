@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<root>
+	<item id="Title"><![CDATA[Discuz! Plugin]]></item>
+	<item id="Version"><![CDATA[X3.4]]></item>
+	<item id="Time"><![CDATA[2020-08-24 15:21]]></item>
+	<item id="From"><![CDATA[Discuz! Board (http://local.dzx.com/)]]></item>
+	<item id="Data">
+		<item id="plugin">
+			<item id="available"><![CDATA[1]]></item>
+			<item id="adminid"><![CDATA[1]]></item>
+			<item id="name"><![CDATA[腾讯云点播]]></item>
+			<item id="identifier"><![CDATA[tencentcloud_vod]]></item>
+			<item id="description"><![CDATA[腾讯云点播插件支持在用户发帖时上传视频，如开启转自适应码流后可以根据用户网络带宽动态选择合适码率播放，支持多种格式视频播放。且不占用本站带宽]]></item>
+			<item id="datatables"><![CDATA[]]></item>
+			<item id="directory"><![CDATA[tencentcloud_vod/]]></item>
+			<item id="copyright"><![CDATA[腾讯云]]></item>
+			<item id="version"><![CDATA[1.0.0]]></item>
+			<item id="__modules">
+				<item id="0">
+					<item id="name"><![CDATA[tencentcloud_vod]]></item>
+					<item id="param"><![CDATA[]]></item>
+					<item id="menu"><![CDATA[]]></item>
+					<item id="url"><![CDATA[]]></item>
+					<item id="type"><![CDATA[11]]></item>
+					<item id="adminid"><![CDATA[0]]></item>
+					<item id="displayorder"><![CDATA[0]]></item>
+					<item id="navtitle"><![CDATA[]]></item>
+					<item id="navicon"><![CDATA[]]></item>
+					<item id="navsubname"><![CDATA[]]></item>
+					<item id="navsuburl"><![CDATA[]]></item>
+				</item>
+				<item id="1">
+					<item id="name"><![CDATA[setting_page]]></item>
+					<item id="param"><![CDATA[]]></item>
+					<item id="menu"><![CDATA[设置]]></item>
+					<item id="url"><![CDATA[]]></item>
+					<item id="type"><![CDATA[3]]></item>
+					<item id="adminid"><![CDATA[0]]></item>
+					<item id="displayorder"><![CDATA[0]]></item>
+					<item id="navtitle"><![CDATA[]]></item>
+					<item id="navicon"><![CDATA[]]></item>
+					<item id="navsubname"><![CDATA[]]></item>
+					<item id="navsuburl"><![CDATA[]]></item>
+				</item>
+			</item>
+		</item>
+		<item id="version"><![CDATA[X3.4]]></item>
+		<item id="language">
+			<item id="scriptlang">
+				<item id="require_sdk"><![CDATA[缺少依赖文件，请确保安装了腾讯云sdk]]></item>
+				<item id="upload_success"><![CDATA[该分块上传成功!]]></item>
+				<item id="file_name_empty"><![CDATA[文件名为空!]]></item>
+				<item id="file_empty"><![CDATA[上传文件为空!]]></item>
+				<item id="temp_dir_error"><![CDATA[获取临时文件夹出错!]]></item>
+				<item id="temp_write_error"><![CDATA[临时文件写入失败!]]></item>
+				<item id="secret_id_error"><![CDATA[SecretId为空或格式错误]]></item>
+				<item id="secret_key_error"><![CDATA[SecretKey为空或格式错误]]></item>
+				<item id="app_id_error"><![CDATA[AppID为空或格式错误]]></item>
+				<item id="custom_error"><![CDATA[ 自定义密钥传参错误]]></item>
+			</item>
+			<item id="templatelang">
+				<item id="setting"><![CDATA[参数设置]]></item>
+				<item id="yes"><![CDATA[是]]></item>
+				<item id="no"><![CDATA[否]]></item>
+				<item id="visit"><![CDATA[访问]]></item>
+				<item id="custom_key"><![CDATA[自定义密钥：]]></item>
+				<item id="custom_key_desc"><![CDATA[为该插件配置单独定义的腾讯云密钥]]></item>
+				<item id="secret_key_desc"><![CDATA[获取SecretId和SecretKey或通过"新建密钥"创建密钥串]]></item>
+				<item id="secret_manage"><![CDATA[密钥管理]]></item>
+				<item id="app_manage"><![CDATA[应用管理]]></item>
+				<item id="get_app_id"><![CDATA[获取AppID或通过"创建应用"创建AppID]]></item>
+				<item id="transcode"><![CDATA[转自适应码流]]></item>
+				<item id="transcode_desc"><![CDATA[根据用户网络带宽动态选择合适码率播放，支持多种格式视频播放，但可能导致上传后的视频因转换码率而无法实时播放。请根据情况开启。]]></item>
+				<item id="save"><![CDATA[保存]]></item>
+				<item id="upload"><![CDATA[上传]]></item>
+				<item id="docs_center"><![CDATA[文档中心]]></item>
+				<item id="support"><![CDATA[意见反馈]]></item>
+				<item id="vod"><![CDATA[腾讯云点播]]></item>
+				<item id="upload_error"><![CDATA[上传失败!]]></item>
+				<item id="upload_success"><![CDATA[上传成功!]]></item>
+				<item id="file_empty"><![CDATA[请先选择文件!]]></item>
+				<item id="not_support_type"><![CDATA[暂不支持该视频格式,需管理员开启转自适应码流!]]></item>
+			</item>
+		</item>
+		<item id="installfile"><![CDATA[install.php]]></item>
+		<item id="uninstallfile"><![CDATA[uninstall.php]]></item>
+		<item id="enablefile"><![CDATA[enable.php]]></item>
+		<item id="disablefile"><![CDATA[disable.php]]></item>
+	</item>
+</root>

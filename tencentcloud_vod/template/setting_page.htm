@@ -1,0 +1,109 @@
+<style type="text/css">
+    input[disabled] {
+        background-color: gainsboro;
+    }
+</style>
+
+<form action="admin.php?action=plugins&operation=config&do={$pluginid}&identifier=tencentcloud_vod&pmod=setting_page" method="post">
+    <table class="tb tb2">
+        <tbody>
+        <tr>
+            <th colspan="15" class="partition">{lang tencentcloud_vod:setting}</th>
+        </tr>
+        <tr>
+            <td colspan="2" class="td27">{lang tencentcloud_vod:custom_key}</td>
+        </tr>
+        <tr class="noborder">
+            <td class="vtop rowform">
+                <ul>
+                    <li <!--{if $customKey === 1 }-->class="checked" <!--{/if}--> ><input <!--{if $customKey === 1 }-->checked="checked" <!--{/if}--> id="custom-key" class="radio" type="radio" name="customKey" value="1"><label for="custom-key">{lang tencentcloud_vod:yes}</label></li>
+                    <li <!--{if $customKey === 0 }-->class="checked" <!--{/if}--> ><input <!--{if $customKey === 0 }-->checked="checked" <!--{/if}--> class="radio" id="global-key" type="radio" name="customKey" value="0"><label for="global-key">{lang tencentcloud_vod:no}</label></li>
+                </ul>
+            </td>
+            <td class="vtop tips2">{lang tencentcloud_vod:custom_key_desc}</td>
+        </tr>
+        <tr>
+            <td colspan="2" class="td27" ><label for="secret-id">SecretId:</label></td>
+        </tr>
+        <tr class="noborder">
+            <td class="vtop rowform">
+                <input id="secret-id" name="secretId" size="42" type="text" class="text" value="{$secretId}">
+            </td>
+            <td class="vtop tips2">SecretId</td>
+        </tr>
+        <tr>
+            <td colspan="2" class="td27"><label for="secret-key">SecretKey:</label></td>
+        </tr>
+        <tr class="noborder">
+            <td class="vtop rowform">
+                <input name="secretKey" size="42" id="secret-key" type="text" class="text" value="{$secretKey}">
+            </td>
+            <td class="vtop tips2">{lang tencentcloud_vod:visit}<a href="https://console.qcloud.com/cam/capi" target="_blank">{lang tencentcloud_vod:secret_manage}</a>{lang tencentcloud_vod:secret_key_desc}</td>
+        </tr>
+        <tr>
+            <td colspan="2" class="td27"><label for="app-id">AppID:</label></td>
+        </tr>
+        <tr class="noborder">
+            <td class="vtop rowform">
+                <input name="appID" size="42" id="app-id" type="text" class="text" value="{$appID}">
+            </td>
+            <td class="vtop tips2">{lang tencentcloud_vod:visit}<a href="https://console.cloud.tencent.com/vod/app-manage" target="_blank">{lang tencentcloud_vod:app_manage}</a>
+                {lang tencentcloud_vod:get_app_id}</td>
+        </tr>
+
+        <tr>
+            <td colspan="2" class="td27">{lang tencentcloud_vod:transcode}:</td>
+        </tr>
+        <tr class="noborder">
+            <td class="vtop rowform">
+                <ul>
+                    <li <!--{if $transcode === 1 }-->class="checked" <!--{/if}--> ><input <!--{if $transcode === 1 }-->checked="checked" <!--{/if}--> id="trans-code" class="radio" type="radio" name="transcode" value="1"><label for="trans-code">{lang tencentcloud_vod:yes}</label></li>
+                    <li <!--{if $transcode === 0 }-->class="checked" <!--{/if}--> ><input <!--{if $transcode === 0 }-->checked="checked" <!--{/if}--> id="origin-code" class="radio" type="radio" name="transcode" value="0"><label for="origin-code">{lang tencentcloud_vod:no}</label></li>
+                </ul>
+            </td>
+            <td class="vtop tips2">{lang tencentcloud_vod:transcode_desc}</td>
+        </tr>
+
+        <tr>
+            <td colspan="15">
+                <div class="fixsel">
+                    <input type="submit" class="btn"  id="txc-submit-btn" value="{lang tencentcloud_vod:save}" />
+                </div>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</form>
+<div style="text-align: center;flex: 0 0 auto;margin-top: 3rem;">
+    <a href="https://openapp.qq.com/docs/DiscuzX/vod.html" target="_blank">{lang tencentcloud_vod:docs_center}</a> | <a href="https://github.com/Tencent-Cloud-Plugins/tencentcloud-discuzx-plugin-vod" target="_blank">GitHub</a> | <a
+        href="https://support.qq.com/product/164613" target="_blank">{lang tencentcloud_vod:support}</a>
+</div>
+<script src="source/plugin/tencentcloud_vod/js/jquery.min.js"></script>
+<script type="text/javascript">
+    jQuery.noConflict();
+    jQuery(function($){
+        function changeDisable(type){
+            $("#secret-key").attr("disabled",type);
+            $("#secret-id").attr("disabled",type);
+        }
+        function initStatus(){
+            var status = $("#global-key").attr('checked');
+            if (status) {
+                changeDisable(true);
+            }
+        }
+        initStatus();
+
+        $("#custom-key").change(function () {
+            $(this).parent().addClass('checked');
+            $("#global-key").parent().removeClass('checked');
+            changeDisable(false);
+        });
+
+        $("#global-key").change(function () {
+            $(this).parent().addClass('checked');
+            $("#custom-key").parent().removeClass('checked');
+            changeDisable(true);
+        });
+    });
+</script>

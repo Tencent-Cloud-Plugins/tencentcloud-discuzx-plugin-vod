@@ -1,0 +1,16 @@
+{
+  "require": {
+    "qcloud/vod-sdk-v5": "v2.4.0"
+  },
+  "autoload": {
+    "psr-4":{
+      "TencentDiscuzVOD\\": "./libs"
+    }
+  },
+  "repositories": {
+    "packagist": {
+      "type": "composer",
+      "url": "https://mirrors.cloud.tencent.com/composer/"
+    }
+  }
+}

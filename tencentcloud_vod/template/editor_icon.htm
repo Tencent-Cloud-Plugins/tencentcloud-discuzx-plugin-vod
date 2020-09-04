@@ -1,0 +1,90 @@
+<!--
+ Copyright (C) 2020 Tencent Cloud.
+
+ Licensed under the Apache License, Version 2.0 (the "License");
+ you may not use this file except in compliance with the License.
+ You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+-->
+
+<!--{block editor_icon}-->
+<style type="text/css">
+    .file-upload{
+        display: none;
+    }
+</style>
+<form enctype="multipart/form-data" id="fileUpload">
+    <input class="file-upload" type="file" name="file" accept="video/*,video/x-flv" id="file"/>
+    <button class="file-upload" id="btn" type="button">{lang tencentcloud_vod:upload}</button>
+    <button class="file-upload" id="show_btn" type="button">已成功上传<span id="percentage">0</span>%</button>
+</form>
+<a id="txc-vod" title="{lang tencentcloud_vod:vod}" href="javascript:;" style="background-image: url('source/plugin/tencentcloud_vod/img/txc.svg');width: 2.25rem;">{lang tencentcloud_vod:vod}</a>
+<script src="source/plugin/tencentcloud_vod/js/jquery.min.js"></script>
+<script src="source/plugin/tencentcloud_vod/js/vod-js-sdk-v6.js"></script>
+<script src="source/plugin/tencentcloud_vod/js/axios.min.js"></script>
+<script type="text/javascript">
+    jQuery.noConflict();
+    jQuery(function ($) {
+        //获取签名
+        function getSignature() {
+            return axios.post('plugin.php?id=tencentcloud_vod:get_signature').then(function (response) {
+                if (response.data.code !== 0) {
+                    showDialog(response.data.msg, 'error', 'error Tips');
+                    return;
+                }
+                return response.data.signature;
+            })
+        }
+
+        $("#btn").click(function () {
+            var file =  $('#file')[0].files[0];
+            if (file === undefined) {
+                alert('{lang tencentcloud_vod:file_empty}');
+                return false;
+            }
+            //不使用转自适应码流，只允许上传浏览器能之际播放的格式
+            {if $transcode !==1 }
+            var supportType = ["video/quicktime", "video/mp4", "video/ogg", "video/webm"];
+            if (!supportType.includes(file.type)) {
+                showDialog('{lang tencentcloud_vod:not_support_type}', 'error', 'error Tips');
+                return false;
+            }
+            {/if}
+            const tcVod = new TcVod.default({
+                getSignature: getSignature
+            })
+            const uploader = tcVod.upload({
+                mediaFile: file,
+            })
+            uploader.on('media_progress', function(info) {
+                $('#percentage').text(parseInt(info.percent*100));
+            })
+            uploader.done().then(function (doneResult) {
+                console.log(doneResult)
+                var html = "[tcplayer]"+doneResult.fileId+"[/tcplayer]";
+                $('#e_iframe').contents().find('body').append(html);
+            }).catch(function (err) {
+                alert('{lang tencentcloud_vod:upload_error}');
+                console.log(err)
+            })
+        });
+
+        $("#txc-vod").click(function () {
+            var obj = $(".file-upload");
+            if(obj.is(":hidden")){
+                obj.show();
+            }else{
+                obj.hide();
+            }
+        });
+
+    });
+</script>
+<!--{/block}-->
