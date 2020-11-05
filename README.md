@@ -69,3 +69,11 @@
 ### 7.1 tencentcloud-discuzx-plugin-vod v1.0.0
 
 - 支持在发帖时上传视频
+### 7.2 tencentcloud-discuzx-plugin-vod v1.1.0
+支持触屏版
+---
+
+本项目由腾讯云中小企业产品中心建设和维护，了解与该插件使用相关的更多信息，请访问[春雨文档中心](https://openapp.qq.com/docs/DiscuzX/vod.html) 
+
+请通过[咨询建议](https://support.qq.com/products/164613) 向我们提交宝贵意见。
+
