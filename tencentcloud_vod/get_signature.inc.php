@@ -24,10 +24,12 @@ try {
     $VODOptions = VODActions::getVODOptionsObject();
     $secretId = $VODOptions->getSecretID();
     $secretKey = $VODOptions->getSecretKey();
-    if ( empty($secretId) || empty($secretKey) ) {
+    $appId = $VODOptions->getAppID();
+    if ( empty($secretId) || empty($secretKey) || empty($appId)) {
         echo json_encode(array('code' => 1, 'msg' => lang('plugin/tencentcloud_vod', 'secret_id_error') . ' ,请联系管理员解决'));
         exit();
     }
+
     $current = time();
     $expired = $current + 28800;  // 签名有效期：8小时
     // 向参数列表填入参数
@@ -36,6 +38,7 @@ try {
         'currentTimeStamp' => $current,
         'expireTime' => $expired,
         'random' => mt_rand(),
+        'vodSubAppId'=>$appId,
     );
     if ($VODOptions->getTranscode() === $VODOptions::HLS_TRANSCODE) {
         //预设任务转自适应码流
